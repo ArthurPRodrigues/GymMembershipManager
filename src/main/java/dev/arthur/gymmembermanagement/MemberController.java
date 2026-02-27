@@ -1,4 +1,4 @@
-package dev.arthur.GymMemberManagement;
+package dev.arthur.gymmembermanagement;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping
-public class Controller {
+public class MemberController {
 
 	@GetMapping("/welcome")
 	public String Welcome() {
