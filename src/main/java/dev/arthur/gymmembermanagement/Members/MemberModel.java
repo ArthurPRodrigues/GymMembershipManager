@@ -2,68 +2,47 @@ package dev.arthur.gymmembermanagement.Members;
 
 import java.util.List;
 
-import dev.arthur.gymmembermanagement.Trainer.WorkoutModel;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+import dev.arthur.gymmembermanagement.Workout.WorkoutModel;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_members")
+@NoArgsConstructor
+@AllArgsConstructor
 public class MemberModel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@Column(name = "name")
 	private String name;
+
+	@Column(name = "age")
 	private int age;
+
+	@Column(name = "email")
 	private String email;
+
+	@Column(name = "membership_type")
 	private String membershipType;
 
-	@ManyToMany()
+	@ManyToMany
+	@JoinTable(
+			name = "tb_members_workouts",
+			joinColumns = @JoinColumn(name = "member_id"),
+			inverseJoinColumns = @JoinColumn(name = "workout_id")
+	)
 	private List<WorkoutModel> workouts;
-
-	public MemberModel() {
-	}
-
-	public MemberModel(String name, int age, String email, String membershipType) {
-		this.name = name;
-		this.age = age;
-		this.email = email;
-		this.membershipType = membershipType;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public String getMembershipType() {
-		return membershipType;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public void setMembershipType(String membershipType) {
-		this.membershipType = membershipType;
-	}
 }
