@@ -1,4 +1,4 @@
-package dev.arthur.gymmembermanagement.Trainer;
+package dev.arthur.gymmembermanagement.Workout;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
