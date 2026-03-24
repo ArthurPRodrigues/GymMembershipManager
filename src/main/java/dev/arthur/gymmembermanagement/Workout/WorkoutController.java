@@ -1,6 +1,8 @@
 package dev.arthur.gymmembermanagement.Workout;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,13 +11,34 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/workouts")
 public class WorkoutController {
 
-	@GetMapping("/welcome")
-	public String Welcome() {
-		return "Welcome to the Gym Trainer!";}
+	//Add a workout
+	@PostMapping("/create")
+	public String createNinja() {
+		return "Created Ninja";
+	}
 
-	@PutMapping
-	public String Update() {
-		return "Update trainer information endpoint.";
+	// Find a workout by id
+	@GetMapping("/allId")
+	public String allWorkoutsById() {
+		return "All Workouts";
+	}
+
+	// Show all workouts
+	@GetMapping("/all")
+	public String allWorkouts() {
+		return "All workouts";
+	}
+
+	// Change data from workout
+	@PutMapping("/update")
+	public String updateWorkoutsById() {
+		return "Updated workouts";
+	}
+
+	// Delete workout
+	@DeleteMapping("/deleteId")
+	public String deleteWorkoutsById() {
+		return "Deleted workouts";
 	}
 
 }
