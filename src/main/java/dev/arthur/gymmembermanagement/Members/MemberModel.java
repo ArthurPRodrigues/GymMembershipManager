@@ -5,6 +5,8 @@ import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import dev.arthur.gymmembermanagement.Workout.WorkoutModel;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -44,5 +46,6 @@ public class MemberModel {
 			joinColumns = @JoinColumn(name = "member_id"),
 			inverseJoinColumns = @JoinColumn(name = "workout_id")
 	)
+	@JsonIgnore
 	private List<WorkoutModel> workouts;
 }
