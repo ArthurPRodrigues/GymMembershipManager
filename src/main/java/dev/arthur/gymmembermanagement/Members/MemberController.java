@@ -1,19 +1,15 @@
 package dev.arthur.gymmembermanagement.Members;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/members")
 public class MemberController {
 
-	@GetMapping("/welcome")
-	public String Welcome() {
-		return "Welcome to the Gym Member Management System!";
+	@PostMapping("/create")
+	public String createMember() {
+		return "Created Member";
 	}
-
 	@PutMapping
 	public String Update() {
 		return "This is the update endpoint.";

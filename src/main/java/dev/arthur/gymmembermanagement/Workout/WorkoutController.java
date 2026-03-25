@@ -13,8 +13,8 @@ public class WorkoutController {
 
 	//Add a workout
 	@PostMapping("/create")
-	public String createNinja() {
-		return "Created Ninja";
+	public String createWorkout() {
+		return "Created Workout";
 	}
 
 	// Find a workout by id
