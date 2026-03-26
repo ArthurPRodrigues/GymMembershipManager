@@ -3,7 +3,9 @@ package dev.arthur.gymmembermanagement.Members;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -20,6 +22,8 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_members")
+@Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class MemberModel {

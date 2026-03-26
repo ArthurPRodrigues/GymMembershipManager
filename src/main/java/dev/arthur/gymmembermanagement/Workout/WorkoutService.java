@@ -22,4 +22,11 @@ public class WorkoutService {
 		return this.workoutRepository.findById(id);
 	}
 
+	public WorkoutModel createWorkout(WorkoutModel workoutModel) {
+		return this.workoutRepository.save(workoutModel);
+	}
+
+	public void deleteWorkout(long id) {
+		this.workoutRepository.deleteById(id);
+	}
 }

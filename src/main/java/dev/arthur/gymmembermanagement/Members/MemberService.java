@@ -15,10 +15,20 @@ public class MemberService {
 	}
 
 	public List<MemberModel> listMembers() {
+		Optional<MemberModel> listMemberById = memberRepository.findAll().stream().findFirst();
 		return memberRepository.findAll();
 	}
 
 	public Optional<MemberModel> listMembersById(Long id) {
-		return memberRepository.findById(id);
+		Optional<MemberModel> listMemberById = memberRepository.findById(id);
+		return Optional.ofNullable(listMemberById.orElse(null));
+	}
+
+	public MemberModel createMember(MemberModel memberModel) {
+		return memberRepository.save(memberModel);
+	}
+
+	public void deleteMember(long id) {
+		memberRepository.deleteById(id);
 	}
 }
