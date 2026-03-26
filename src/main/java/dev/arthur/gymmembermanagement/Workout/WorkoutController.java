@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,8 +22,8 @@ public class WorkoutController {
 
 	//Add a workout
 	@PostMapping("/create")
-	public String createWorkout() {
-		return "Created Workout";
+	public WorkoutModel createWorkout(@RequestBody WorkoutModel workoutModel) {
+		return workoutRepository.save(workoutModel);
 	}
 
 	// Find a workout by id
@@ -38,13 +39,13 @@ public class WorkoutController {
 	}
 
 	// Change data from workout
-	@PutMapping("/update")
-	public String updateWorkoutsById() {
-		return "Updated workouts";
+	@PutMapping("/{id}")
+	public WorkoutModel updateWorkout(@RequestBody WorkoutModel workoutModel) {
+		return workoutRepository.save(workoutModel);
 	}
 
 	// Delete workout
-	@DeleteMapping("/deleteId")
+	@DeleteMapping("/{id}")
 	public String deleteWorkoutsById() {
 		return "Deleted workouts";
 	}
