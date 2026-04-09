@@ -9,26 +9,35 @@ import org.springframework.stereotype.Service;
 public class MemberService {
 
 	private final MemberRepository memberRepository;
+	private final MemberMapper memberMapper;
 
-	public MemberService(MemberRepository memberRepository) {
+	public MemberService(MemberRepository memberRepository, MemberMapper memberMapper) {
 		this.memberRepository = memberRepository;
+		this.memberMapper = memberMapper;
 	}
 
 	public List<MemberModel> listMembers() {
-		Optional<MemberModel> listMemberById = memberRepository.findAll().stream().findFirst();
 		return memberRepository.findAll();
 	}
 
 	public Optional<MemberModel> listMembersById(Long id) {
-		Optional<MemberModel> listMemberById = memberRepository.findById(id);
-		return Optional.ofNullable(listMemberById.orElse(null));
+		return memberRepository.findById(id);
 	}
 
-	public MemberModel createMember(MemberModel memberModel) {
-		return memberRepository.save(memberModel);
+	public MemberDTO createMember(MemberDTO memberDTO) {
+		MemberModel memberModel = memberMapper.map(memberDTO);
+		memberRepository.save(memberModel);
+		return memberDTO;
 	}
 
-	public void deleteMember(long id) {
+	public MemberDTO updateMember(Long id, MemberDTO memberDTO) {
+		MemberModel memberModel = memberMapper.map(memberDTO);
+		memberModel.setId(id);
+		memberRepository.save(memberModel);
+		return memberDTO;
+	}
+
+	public void deleteMember(Long id) {
 		memberRepository.deleteById(id);
 	}
 }
